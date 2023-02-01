@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  def index
+  def index; end
 
-  end
+  def upload_directory_data; end
 end

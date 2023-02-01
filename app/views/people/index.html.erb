@@ -1,0 +1,5 @@
+<%= form_for :people, url: "/upload_directory_data", multipart: true do |form| %>
+  <%= file_field_tag :galactic_data_file %>
+  <%= form.submit "Submit" %>
+<% end %>
+
