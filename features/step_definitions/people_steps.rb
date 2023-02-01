@@ -1,4 +1,4 @@
-Given('I visit the Galactic Directory page') do
+When('I visit the Galactic Directory page') do
   visit(people_path)
 end
 
@@ -18,3 +18,8 @@ Then('I should see the list of valid people') do
     expect(page).to have_content('Kashyyk')
   end
 end
+
+Then('I should not see the invalid people') do
+  expect(page).not_to have_content('Yoda')
+end
+
