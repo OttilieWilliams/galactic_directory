@@ -1,47 +1,53 @@
-<%= form_for :people, url: "/upload_directory_data", multipart: true do |form| %>
-  <%= file_field_tag :galactic_data_file %>
-  <%= form.submit "Submit" %>
-<% end %>
-
-<%= search_form_for @q do |f| %>
-    <%= f.search_field :first_name_or_last_name_or_species_or_gender_or_weapon_or_vehicle_or_locations_name_or_affiliations_name_cont, placeholder: "Search..." %>
-    <%= f.submit "Search" %>
-<% end %>
-
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th><%= sort_link(@q, :first_name) %></th>
-      <th><%= sort_link(@q, :last_name) %></th>
-      <th><%= sort_link(@q, :locations_name, 'Locations') %></th>
-      <th><%= sort_link(@q, :species) %></th>
-      <th><%= sort_link(@q, :gender) %></th>
-      <th><%= sort_link(@q, :affiliations_name, 'Affiliations') %></th>
-      <th><%= sort_link(@q, :weapon) %></th>
-      <th><%= sort_link(@q, :vehicle) %></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @people.each_with_index do |person, index| %>
-      <tr class="person_<%=index%>">
-        <td><%= person.first_name %></td>
-        <td><%= person.last_name %></td>
-        <td><%= person.locations.map(&:name).join(',') %></td>
-        <td><%= person.species %></td>
-        <td><%= person.gender %></td>
-        <td><%= person.affiliations.map(&:name).join(',') %></td>
-        <td><%= person.weapon %></td>
-        <td><%= person.vehicle %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= will_paginate @people %>
-
 <% flash.each do |type, msg| %>
   <div class="alert alert-info">
     <%= msg.html_safe %>
   </div>
 <% end %>
+
+<div class='container'>
+
+  <h1> Galactic Directory</h1>
+
+  <%= form_for :people, url: "/upload_directory_data", multipart: true do |form| %>
+    <%= file_field_tag :galactic_data_file %>
+    <%= form.submit "Submit" %>
+  <% end %>
+
+  <%= search_form_for @q do |f| %>
+    <%= f.search_field :first_name_or_last_name_or_species_or_gender_or_weapon_or_vehicle_or_locations_name_or_affiliations_name_cont, placeholder: "Search..." %>
+    <%= f.submit "Search" %>
+  <% end %>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th><%= sort_link(@q, :first_name) %></th>
+        <th><%= sort_link(@q, :last_name) %></th>
+        <th><%= sort_link(@q, :locations_name, 'Locations') %></th>
+        <th><%= sort_link(@q, :species) %></th>
+        <th><%= sort_link(@q, :gender) %></th>
+        <th><%= sort_link(@q, :affiliations_name, 'Affiliations') %></th>
+        <th><%= sort_link(@q, :weapon) %></th>
+        <th><%= sort_link(@q, :vehicle) %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @people.each_with_index do |person, index| %>
+        <tr class="person_<%=index%>">
+          <td><%= person.first_name %></td>
+          <td><%= person.last_name %></td>
+          <td><%= person.locations.map(&:name).join(',') %></td>
+          <td><%= person.species %></td>
+          <td><%= person.gender %></td>
+          <td><%= person.affiliations.map(&:name).join(',') %></td>
+          <td><%= person.weapon %></td>
+          <td><%= person.vehicle %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= will_paginate @people %>
+</div>
+<!--.container-->
