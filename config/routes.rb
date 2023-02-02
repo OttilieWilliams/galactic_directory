@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  root to: 'people#index'
   resources :people
   post '/upload_directory_data', to: 'people#upload_directory_data'
 end
