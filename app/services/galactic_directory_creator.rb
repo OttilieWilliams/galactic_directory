@@ -18,7 +18,7 @@ class GalacticDirectoryCreator
   def process_row(row, index)
     first_name, last_name = first_and_last_name(row['Name'])
     Person.create!(
-      first_name: first_name, last_name: last_name,
+      first_name:, last_name:,
       species: row['Species'],
       gender: row['Gender'],
       weapon: row['Weapon'],
@@ -38,4 +38,3 @@ class GalacticDirectoryCreator
     associations.split(',').map { |association| association_class.constantize.find_or_create_by(name: association) }
   end
 end
-
