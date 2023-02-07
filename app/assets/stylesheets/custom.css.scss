@@ -1,11 +1,68 @@
-h1 {
-  color: green;
+@font-face {
+  font-family: "Star Jedi Hollow";
+  src: url("https://raw.githubusercontent.com/robole/artifice/main/star-wars-circular-wipe/assets/fonts/Starjedi-hollow.woff2");
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  align-content: center;
-  gap: 20px;
- }
+}
+
+h1 {
+  padding-top: 20px;
+  font-family: "Star Jedi Hollow", serif;
+  font-size: 60px;
+  color: rgb(255, 255, 44);
+  margin: 0;
+  align-self: center;
+}
+
+.upload-data {
+  align-self: center;
+  padding: 20px;
+  color: white;
+}
+
+.search {
+  align-self: flex-end;
+  padding-bottom: 20px;
+}
+
+.dark_pagination {
+  background: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+  color: white;
+  text-align: center;
+  padding: 1em;
+  cursor: default;
+}
+
+.dark_pagination a,
+.dark_pagination span {
+  padding: 0.2em 0.3em;
+}
+
+.dark_pagination .disabled {
+  color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.dark_pagination .current {
+  font-style: normal;
+  font-weight: bold;
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  line-height: 1.5;
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+  text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px;
+}
+
+.dark_pagination a {
+  text-decoration: none;
+}
+
+.dark_pagination a:hover,
+.dark_pagination a:focus {
+  text-decoration: underline;
+}

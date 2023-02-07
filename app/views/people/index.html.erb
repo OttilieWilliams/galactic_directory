@@ -5,20 +5,25 @@
 <% end %>
 
 <div class='container'>
+  <h1>Star Wars Galactic Directory</h1>
 
-  <h1> Galactic Directory</h1>
+  <div class='upload-data'>
+    <%= form_for :people, url: "/upload_directory_data", multipart: true do |form| %>
+      <%= file_field_tag :galactic_data_file %>
+      <%= form.submit "Submit", class: "btn btn-success" %>
+    <% end %>
+  </div>
+  <!--.upload-data-->
 
-  <%= form_for :people, url: "/upload_directory_data", multipart: true do |form| %>
-    <%= file_field_tag :galactic_data_file %>
-    <%= form.submit "Submit" %>
-  <% end %>
+  <div class='search'>
+    <%= search_form_for @q do |f| %>
+      <%= f.search_field :first_name_or_last_name_or_species_or_gender_or_weapon_or_vehicle_or_locations_name_or_affiliations_name_cont, placeholder: "Search..." %>
+      <%= f.submit "Search" %>
+    <% end %>
+  </div>
+  <!--.search-->
 
-  <%= search_form_for @q do |f| %>
-    <%= f.search_field :first_name_or_last_name_or_species_or_gender_or_weapon_or_vehicle_or_locations_name_or_affiliations_name_cont, placeholder: "Search..." %>
-    <%= f.submit "Search" %>
-  <% end %>
-
-  <table class="table table-bordered">
+  <table class="table table-dark table-bordered">
     <thead>
       <tr>
         <th><%= sort_link(@q, :first_name) %></th>
@@ -47,7 +52,12 @@
       <% end %>
     </tbody>
   </table>
-
-  <%= will_paginate @people %>
 </div>
 <!--.container-->
+
+<div class="dark_pagination">
+  <div class="page_info">
+    <%= page_entries_info @people %>
+  </div>
+  <%= will_paginate @people, :container => false %>
+</div>
